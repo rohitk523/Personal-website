@@ -20,7 +20,7 @@ class Constants {
 
   // About Section
   static const String aboutDescription = """
-A versatile Software Engineer specializing in end-to-end solution architecture, 
+A Software Engineer specializing in end-to-end solution architecture, 
 from cloud infrastructure to user interfaces. 
 Proficient in Python backend development, cloud deployment with AWS, containerization with Docker, and cross-platform application development using Flutter. 
 Combining academic excellence from Liverpool John Moores University with industry experience, I'm now crafting innovative solutions as an independent developer and entrepreneur. 

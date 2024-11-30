@@ -72,24 +72,22 @@ class HomeScreen extends StatelessWidget {
               ),
         ),
         SizedBox(height: 15),
-        Container(
-          height: isSmallScreen ? 40 : 60,
-          child: AnimatedTextKit(
-            animatedTexts: [
-              TypewriterAnimatedText(
-                Constants.title,
-                textStyle: Theme.of(context).textTheme.displayMedium!.copyWith(
-                      color: Theme.of(context).brightness == Brightness.dark
-                          ? Colors.grey[400]
-                          : Colors.grey[700],
-                      fontSize: isSmallScreen ? 24 : 32,
-                    ),
-                speed: Duration(milliseconds: 100),
-              ),
-            ],
-            totalRepeatCount: 1,
-            displayFullTextOnTap: true,
-          ),
+        // Removed fixed height container
+        AnimatedTextKit(
+          animatedTexts: [
+            TypewriterAnimatedText(
+              Constants.title,
+              textStyle: Theme.of(context).textTheme.displayMedium!.copyWith(
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.grey[400]
+                        : Colors.grey[700],
+                    fontSize: isSmallScreen ? 24 : 32,
+                  ),
+              speed: Duration(milliseconds: 100),
+            ),
+          ],
+          totalRepeatCount: 1,
+          displayFullTextOnTap: true,
         ),
         SizedBox(height: 30),
         Container(
