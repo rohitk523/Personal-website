@@ -20,6 +20,7 @@ jobs:
       # Get dependencies and build web
       - name: Build Flutter Web
         run: |
+          cd flutter_portfolio
           flutter pub get
           flutter build web --release
       
