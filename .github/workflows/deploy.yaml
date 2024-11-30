@@ -17,12 +17,14 @@ jobs:
           flutter-version: '3.24.5'
           channel: 'stable'
       
-      # Get dependencies and build web
+      # Enable web and get dependencies
       - name: Build Flutter Web
         run: |
           cd flutter_portfolio
+          flutter config --enable-web
           flutter pub get
           flutter build web --release
+          ls -la build/web  # Debug: verify build contents
       
       # Configure AWS credentials
       - name: Configure AWS Credentials
@@ -35,9 +37,11 @@ jobs:
       # Deploy to S3
       - name: Deploy to S3
         run: |
+          cd flutter_portfolio
           aws s3 sync build/web/ s3://portfolio.codewithrk.xyz --delete
       
       # Optional: Invalidate CloudFront cache if using CDN
       - name: Invalidate CloudFront
+        if: success()  # Only run if previous steps succeeded
         run: |
           aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
