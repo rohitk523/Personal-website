@@ -4,11 +4,12 @@ class Constants {
   static const String title = "Machine Learning Engineer";
   static const String email = "rohitkale523@gmail.com";
   static const String location = "Pune, Maharashtra, India";
+  static const String nickname = "Dr. Versatile";
 
   // Social Links
-  static const String githubUrl = "https://github.com/yourusername";
+  static const String githubUrl = "https://github.com/rohitk523";
   static const String linkedinUrl =
-      "https://www.linkedin.com/in/rohitkale-64b5912010";
+      "https://www.linkedin.com/in/rohit-kale-64b5912010/";
 
   // Section Titles
   static const String aboutTitle = "About Me";

@@ -31,7 +31,7 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
           TextButton(
             onPressed: () => Navigator.pushNamed(context, Routes.home),
             child: Text(
-              Constants.name,
+              Constants.nickname,
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ),
@@ -93,7 +93,7 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
 
   Widget _buildResumeButton(BuildContext context) {
     return ElevatedButton(
-      onPressed: () => Helpers.launchURL('/assets/resume.pdf'),
+      onPressed: () => Helpers.launchURL('/assets/resume/resume.pdf'),
       style: ElevatedButton.styleFrom(
         backgroundColor: Theme.of(context).primaryColor,
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -142,7 +142,7 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
               title: Text('Resume'),
               onTap: () {
                 Navigator.pop(context);
-                Helpers.launchURL('/assets/resume.pdf');
+                Helpers.launchURL('/assets/resume/resume.pdf');
               },
             ),
           ],
