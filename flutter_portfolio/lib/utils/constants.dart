@@ -20,7 +20,7 @@ class Constants {
 
   // About Section
   static const String aboutDescription = """
-A skilled Data Analyst experience and a strong foundation in Machine
+A skilled Data Analyst with experience and a strong foundation in Machine
 Learning. Deep understanding of data science principles, advanced machine learning
 models, and modern deployment practices. Currently pursuing entrepreneurial ventures.""";
 
