@@ -72,6 +72,10 @@ flutter:
     - assets/resume/resume.pdf
     - assets/images/object-detection.png
     - assets/images/medilink.png
+    - assets/images/DocNest.png
+    - assets/images/fastapi-render.png
+    - assets/images/ml-library.png
+    - assets/images/personal-website.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

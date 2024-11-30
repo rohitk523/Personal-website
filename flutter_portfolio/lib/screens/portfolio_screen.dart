@@ -9,6 +9,37 @@ import '../utils/constants.dart';
 class PortfolioScreen extends StatelessWidget {
   final List<Project> projects = [
     Project(
+      title: 'DocNest',
+      description:
+          'Cross-platform document management system for storing and organizing various types of documents (government, medical, educational) securely.',
+      technologies: [
+        'Python',
+        'FastAPI',
+        'Flutter',
+        'AWS',
+        'GitHub Actions',
+        'Docker',
+        'PostgreSQL'
+      ],
+      githubUrl: 'https://github.com/rohitk523/DocNest',
+      imageUrl: 'assets/images/DocNest.png',
+    ),
+    Project(
+      title: 'FastAPI-Render',
+      description:
+          'A template project demonstrating secure API deployment using FastAPI and Render. Features include API key authentication, environment variable configuration, and automated Docker deployments.',
+      technologies: [
+        'FastAPI',
+        'Python',
+        'Docker',
+        'Render',
+        'GitHub',
+        'REST API'
+      ],
+      githubUrl: 'https://github.com/rohitk523/fastapi-render',
+      imageUrl: 'assets/images/fastapi-render.png',
+    ),
+    Project(
       title: 'Object Detection using Roboflow and YOLOv8',
       description:
           'Built an object detection system to identify hand gestures in real-time or using uploaded photos. Implemented state-of-the-art YOLOv8 model with Roboflow for training and deployment.',
@@ -31,6 +62,37 @@ class PortfolioScreen extends StatelessWidget {
       // liveUrl: 'https://medilink-demo.com',
       imageUrl: 'assets/images/medilink.png',
     ),
+    Project(
+      title: 'Personal Portfolio Website',
+      description:
+          'A modern, responsive portfolio website built with Flutter web. Features dark/light theme switching, responsive design, animated components, and a clean, professional interface.',
+      technologies: [
+        'Flutter',
+        'Dart',
+        'AWS',
+        'Provider',
+        'GitHub Actions',
+        'Responsive Design'
+      ],
+      githubUrl: 'https://github.com/rohitk523/Personal-website',
+      imageUrl: 'assets/images/personal-website.png',
+    ),
+    Project(
+      title: 'ML Library',
+      description:
+          'A comprehensive web application showcasing real-world machine learning applications. Features interactive demonstrations of various ML capabilities including object detection, image classification, and image segmentation.',
+      technologies: [
+        'Flutter',
+        'FastAPI',
+        'PyTorch',
+        'Machine Learning',
+        'Docker',
+        'AWS'
+      ],
+      githubUrl: 'https://github.com/rohitk523/ml-library',
+      imageUrl: 'assets/images/ml-library.png',
+    ),
+
     // Add more projects as needed
   ];
 
