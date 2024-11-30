@@ -2,25 +2,31 @@ import 'package:flutter/material.dart';
 import '../widgets/skill_card.dart';
 import '../utils/constants.dart';
 
-// about_screen.dart
 class AboutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(40),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildHeader(context),
-          SizedBox(height: 40),
-          _buildMainContent(context),
-        ],
+    final isSmallScreen = MediaQuery.of(context).size.width < 800;
+
+    return SingleChildScrollView(
+      child: Container(
+        padding: EdgeInsets.all(isSmallScreen ? 20 : 40),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildHeader(context),
+            SizedBox(height: 40),
+            isSmallScreen
+                ? _buildMobileContent(context)
+                : _buildMainContent(context),
+          ],
+        ),
       ),
     );
   }
 
   Widget _buildHeader(BuildContext context) {
     return Container(
+      width: double.infinity,
       padding: EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
@@ -38,7 +44,9 @@ class AboutScreen extends StatelessWidget {
         children: [
           Text(
             Constants.aboutTitle,
-            style: Theme.of(context).textTheme.displayLarge,
+            style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                  fontSize: MediaQuery.of(context).size.width < 600 ? 28 : 42,
+                ),
           ),
           SizedBox(height: 20),
           Text(
@@ -49,6 +57,16 @@ class AboutScreen extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildMobileContent(BuildContext context) {
+    return Column(
+      children: [
+        _buildEducationSection(context),
+        SizedBox(height: 40),
+        _buildSkillsSection(context),
+      ],
     );
   }
 
@@ -220,22 +238,13 @@ class AboutScreen extends StatelessWidget {
             spacing: 12,
             runSpacing: 12,
             children: [
-              // Backend Development
               SkillCard(skill: 'Python', progress: 0.8),
               SkillCard(skill: 'FastAPI', progress: 0.8),
-
-              // Frontend Development
               SkillCard(skill: 'Flutter', progress: 0.6),
-
-              // Cloud & DevOps
               SkillCard(skill: 'AWS', progress: 0.7),
               SkillCard(skill: 'Docker', progress: 0.8),
               SkillCard(skill: 'GitHub Actions', progress: 0.9),
-
-              // Databases
               SkillCard(skill: 'PostgreSQL', progress: 0.85),
-
-              // Tools & Others
               SkillCard(skill: 'Git', progress: 0.7),
             ],
           ),

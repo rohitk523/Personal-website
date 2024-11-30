@@ -1,4 +1,3 @@
-// home_screen.dart
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import '../utils/constants.dart';
@@ -7,20 +6,31 @@ import '../widgets/social_links.dart';
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height - 80,
-      width: double.infinity,
-      padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildIntroText(context),
-          SizedBox(height: 30),
-          _buildMainContent(context),
-          SizedBox(height: 40),
-          _buildSocialSection(context),
-        ],
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isSmallScreen = screenWidth < 600;
+
+    return SingleChildScrollView(
+      child: Container(
+        constraints: BoxConstraints(
+          minHeight: screenHeight - 80,
+        ),
+        width: double.infinity,
+        padding: EdgeInsets.symmetric(
+          horizontal: isSmallScreen ? 20 : 40,
+          vertical: 20,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildIntroText(context),
+            SizedBox(height: isSmallScreen ? 20 : 30),
+            _buildMainContent(context),
+            SizedBox(height: isSmallScreen ? 30 : 40),
+            _buildSocialSection(context),
+          ],
+        ),
       ),
     );
   }
@@ -50,16 +60,20 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget _buildMainContent(BuildContext context) {
+    final isSmallScreen = MediaQuery.of(context).size.width < 600;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           Constants.name,
-          style: Theme.of(context).textTheme.displayLarge,
+          style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                fontSize: isSmallScreen ? 32 : 42,
+              ),
         ),
         SizedBox(height: 15),
         Container(
-          height: 60, // Fixed height for animation
+          height: isSmallScreen ? 40 : 60,
           child: AnimatedTextKit(
             animatedTexts: [
               TypewriterAnimatedText(
@@ -68,6 +82,7 @@ class HomeScreen extends StatelessWidget {
                       color: Theme.of(context).brightness == Brightness.dark
                           ? Colors.grey[400]
                           : Colors.grey[700],
+                      fontSize: isSmallScreen ? 24 : 32,
                     ),
                 speed: Duration(milliseconds: 100),
               ),
@@ -78,7 +93,7 @@ class HomeScreen extends StatelessWidget {
         ),
         SizedBox(height: 30),
         Container(
-          constraints: BoxConstraints(maxWidth: 1500),
+          width: double.infinity,
           padding: EdgeInsets.all(24),
           decoration: BoxDecoration(
             color: Theme.of(context).cardColor,
@@ -104,6 +119,7 @@ class HomeScreen extends StatelessWidget {
 
   Widget _buildSocialSection(BuildContext context) {
     return Container(
+      width: double.infinity,
       padding: EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: Theme.of(context).brightness == Brightness.dark
