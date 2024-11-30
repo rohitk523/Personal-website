@@ -1,5 +1,6 @@
 // portfolio_screen.dart
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/widgets/github_contributions.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../widgets/project_card.dart';
 import '../models/project.dart';
@@ -18,17 +19,17 @@ class PortfolioScreen extends StatelessWidget {
         'Computer Vision',
         'OpenCV'
       ],
-      githubUrl: 'https://github.com/yourusername/object-detection',
-      imageUrl: 'assets/images/object-detection.jpg',
+      githubUrl: 'https://github.com/rohitk523/Object-detection--Roboflow',
+      imageUrl: 'assets/images/object-detection.png',
     ),
     Project(
       title: 'Medilink Application',
       description:
           'Full-stack application to manage patient data securely for doctors, patients, and pharmacists. Features include appointment scheduling, prescription management, and medical history tracking.',
       technologies: ['Flutter', 'FastAPI', 'PostgreSQL', 'Docker', 'AWS'],
-      githubUrl: 'https://github.com/yourusername/medilink',
-      liveUrl: 'https://medilink-demo.com',
-      imageUrl: 'assets/images/medilink.jpg',
+      githubUrl: 'https://github.com/rohitk523/Medilink',
+      // liveUrl: 'https://medilink-demo.com',
+      imageUrl: 'assets/images/medilink.png',
     ),
     // Add more projects as needed
   ];
@@ -42,8 +43,10 @@ class PortfolioScreen extends StatelessWidget {
         children: [
           _buildHeader(context),
           SizedBox(height: 40),
-          _buildProjectCategories(context),
-          SizedBox(height: 40),
+          // _buildGitHubSection(context), // Add this new section
+          // SizedBox(height: 40),
+          // _buildProjectCategories(context),
+          // SizedBox(height: 40),
           _buildProjectsGrid(context),
         ],
       ),
@@ -100,48 +103,81 @@ class PortfolioScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildProjectCategories(BuildContext context) {
-    final categories = [
-      'All',
-      'Machine Learning',
-      'Web Development',
-      'Mobile Apps'
-    ];
+  // Widget _buildGitHubSection(BuildContext context) {
+  //   return Container(
+  //     padding: EdgeInsets.all(32),
+  //     decoration: BoxDecoration(
+  //       color: Theme.of(context).cardColor,
+  //       borderRadius: BorderRadius.circular(20),
+  //       boxShadow: [
+  //         BoxShadow(
+  //           color: Colors.black.withOpacity(0.05),
+  //           blurRadius: 20,
+  //           offset: Offset(0, 4),
+  //         ),
+  //       ],
+  //     ),
+  //     child: Column(
+  //       crossAxisAlignment: CrossAxisAlignment.start,
+  //       children: [
+  //         Text(
+  //           'GitHub Contributions',
+  //           style: Theme.of(context).textTheme.headlineMedium,
+  //         ),
+  //         SizedBox(height: 20),
+  //         Text(
+  //           'My open source contribution activity over the past year',
+  //           style: Theme.of(context).textTheme.bodyLarge,
+  //         ),
+  //         SizedBox(height: 24),
+  //         GithubContributions(username: 'rohitk523'),
+  //       ],
+  //     ),
+  //   );
+  // }
 
-    return Container(
-      height: 40,
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        itemCount: categories.length,
-        separatorBuilder: (context, index) => SizedBox(width: 12),
-        itemBuilder: (context, index) {
-          return Container(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            decoration: BoxDecoration(
-              color: index == 0
-                  ? Theme.of(context).primaryColor
-                  : Theme.of(context).cardColor,
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(
-                color: Theme.of(context).primaryColor.withOpacity(0.2),
-              ),
-            ),
-            child: Center(
-              child: Text(
-                categories[index],
-                style: TextStyle(
-                  color: index == 0
-                      ? Colors.white
-                      : Theme.of(context).textTheme.bodyLarge?.color,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-          );
-        },
-      ),
-    );
-  }
+  // Widget _buildProjectCategories(BuildContext context) {
+  //   final categories = [
+  //     'All',
+  //     'Machine Learning',
+  //     'Web Development',
+  //     'Mobile Apps'
+  //   ];
+
+  //   return Container(
+  //     height: 40,
+  //     child: ListView.separated(
+  //       scrollDirection: Axis.horizontal,
+  //       itemCount: categories.length,
+  //       separatorBuilder: (context, index) => SizedBox(width: 12),
+  //       itemBuilder: (context, index) {
+  //         return Container(
+  //           padding: EdgeInsets.symmetric(horizontal: 20),
+  //           decoration: BoxDecoration(
+  //             color: index == 0
+  //                 ? Theme.of(context).primaryColor
+  //                 : Theme.of(context).cardColor,
+  //             borderRadius: BorderRadius.circular(20),
+  //             border: Border.all(
+  //               color: Theme.of(context).primaryColor.withOpacity(0.2),
+  //             ),
+  //           ),
+  //           child: Center(
+  //             child: Text(
+  //               categories[index],
+  //               style: TextStyle(
+  //                 color: index == 0
+  //                     ? Colors.white
+  //                     : Theme.of(context).textTheme.bodyLarge?.color,
+  //                 fontWeight: FontWeight.w500,
+  //               ),
+  //             ),
+  //           ),
+  //         );
+  //       },
+  //     ),
+  //   );
+  // }
 
   Widget _buildProjectsGrid(BuildContext context) {
     return MasonryGridView.count(

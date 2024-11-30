@@ -78,7 +78,7 @@ class HomeScreen extends StatelessWidget {
         ),
         SizedBox(height: 30),
         Container(
-          constraints: BoxConstraints(maxWidth: 600),
+          constraints: BoxConstraints(maxWidth: 1500),
           padding: EdgeInsets.all(24),
           decoration: BoxDecoration(
             color: Theme.of(context).cardColor,

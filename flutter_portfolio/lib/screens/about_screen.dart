@@ -220,12 +220,23 @@ class AboutScreen extends StatelessWidget {
             spacing: 12,
             runSpacing: 12,
             children: [
-              SkillCard(skill: 'Python', progress: 0.9),
-              SkillCard(skill: 'Flutter', progress: 0.8),
-              SkillCard(skill: 'Machine Learning', progress: 0.85),
-              SkillCard(skill: 'Data Analysis', progress: 0.8),
-              SkillCard(skill: 'AWS', progress: 0.75),
+              // Backend Development
+              SkillCard(skill: 'Python', progress: 0.8),
+              SkillCard(skill: 'FastAPI', progress: 0.8),
+
+              // Frontend Development
+              SkillCard(skill: 'Flutter', progress: 0.6),
+
+              // Cloud & DevOps
+              SkillCard(skill: 'AWS', progress: 0.7),
               SkillCard(skill: 'Docker', progress: 0.8),
+              SkillCard(skill: 'GitHub Actions', progress: 0.9),
+
+              // Databases
+              SkillCard(skill: 'PostgreSQL', progress: 0.85),
+
+              // Tools & Others
+              SkillCard(skill: 'Git', progress: 0.7),
             ],
           ),
         ],

@@ -18,7 +18,7 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
       padding: EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: Colors.black12,
             blurRadius: 4,
@@ -93,7 +93,8 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
 
   Widget _buildResumeButton(BuildContext context) {
     return ElevatedButton(
-      onPressed: () => Helpers.launchURL('/assets/resume/resume.pdf'),
+      onPressed: () => Helpers.launchURL(
+          'https://raw.githubusercontent.com/rohitk523/Personal-website/main/flutter_portfolio/assets/resume/resume.pdf'),
       style: ElevatedButton.styleFrom(
         backgroundColor: Theme.of(context).primaryColor,
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
