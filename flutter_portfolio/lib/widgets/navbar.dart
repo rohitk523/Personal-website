@@ -9,6 +9,21 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => Size.fromHeight(80);
 
+  Future<void> _openResume(BuildContext context) async {
+    const resumeUrl =
+        'https://raw.githubusercontent.com/rohitk523/Personal-website/main/flutter_portfolio/assets/resume/resume.pdf';
+    try {
+      await Helpers.launchURL(resumeUrl);
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Could not open resume. Please try again later.'),
+          duration: Duration(seconds: 3),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     String currentRoute = ModalRoute.of(context)?.settings.name ?? Routes.home;
@@ -93,8 +108,7 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
 
   Widget _buildResumeButton(BuildContext context) {
     return ElevatedButton(
-      onPressed: () => Helpers.launchURL(
-          'https://raw.githubusercontent.com/rohitk523/Personal-website/main/flutter_portfolio/assets/resume/resume.pdf'),
+      onPressed: () => _openResume(context),
       style: ElevatedButton.styleFrom(
         backgroundColor: Theme.of(context).primaryColor,
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -141,9 +155,9 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
             ),
             ListTile(
               title: Text('Resume'),
-              onTap: () {
+              onTap: () async {
                 Navigator.pop(context);
-                Helpers.launchURL('/assets/resume/resume.pdf');
+                await _openResume(context);
               },
             ),
           ],

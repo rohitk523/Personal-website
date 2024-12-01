@@ -3,10 +3,19 @@ import 'package:url_launcher/url_launcher.dart';
 class Helpers {
   static Future<void> launchURL(String url) async {
     final Uri uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri);
-    } else {
-      throw 'Could not launch $url';
+    try {
+      if (await canLaunchUrl(uri)) {
+        await launchUrl(
+          uri,
+          mode:
+              LaunchMode.externalApplication, // Forces external browser/viewer
+        );
+      } else {
+        throw 'Could not launch $url';
+      }
+    } catch (e) {
+      print('Error launching URL: $e');
+      rethrow;
     }
   }
 
