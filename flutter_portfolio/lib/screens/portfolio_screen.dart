@@ -69,7 +69,7 @@ class PortfolioScreen extends StatelessWidget {
       technologies: [
         'Flutter',
         'Dart',
-        'AWS',
+        'GitHub Pages',
         'Provider',
         'GitHub Actions',
         'Responsive Design'
