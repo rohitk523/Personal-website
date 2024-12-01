@@ -2,47 +2,40 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]  # Triggers on push to main branch
+    branches: [ main ]
+
+# Sets permissions of the GITHUB_TOKEN
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    concurrency: ci-${{ github.ref }}
     
     steps:
-      - uses: actions/checkout@v2
-        with:
-          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token
-          fetch-depth: 0 # otherwise, you will fail to push refs to dest repo
-      
-      # Set up Flutter
-      - uses: subosito/flutter-action@v2
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.24.5'
           channel: 'stable'
       
-      # Enable web and get dependencies
-      - name: Build Flutter Web
+      - name: Build
         run: |
           cd flutter_portfolio
           flutter config --enable-web
           flutter pub get
           flutter build web --release --base-href "/Personal-website/"
-      
-      # Setup Git
-      - name: Setup Git
-        run: |
-          cd flutter_portfolio/build/web
-          git init
-          git config --local user.email "rohitkale523@gmail.com"
-          git config --local user.name "rohitk523"
-          git add .
-          git commit -m "Deploy to GitHub Pages"
-      
-      # Push to gh-pages branch
-      - name: Push to gh-pages
-        uses: ad-m/github-push-action@master
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          folder: flutter_portfolio/build/web
           branch: gh-pages
-          force: true
-          directory: ./flutter_portfolio/build/web
+          clean: true
+          single-commit: true
