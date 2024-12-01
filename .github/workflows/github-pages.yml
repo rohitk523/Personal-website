@@ -4,7 +4,6 @@ on:
   push:
     branches: [ main ]
 
-# Sets permissions of the GITHUB_TOKEN
 permissions:
   contents: write
   pages: write
@@ -31,6 +30,13 @@ jobs:
           flutter config --enable-web
           flutter pub get
           flutter build web --release --base-href "/Personal-website/"
+          
+      - name: Debug build output
+        run: |
+          echo "Contents of build/web directory:"
+          cd flutter_portfolio/build/web
+          ls -la
+          cat index.html
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
@@ -39,3 +45,9 @@ jobs:
           branch: gh-pages
           clean: true
           single-commit: true
+          
+      - name: Verify deployment
+        run: |
+          echo "Waiting for deployment to complete..."
+          sleep 30
+          curl -I https://rohitk523.github.io/Personal-website/
