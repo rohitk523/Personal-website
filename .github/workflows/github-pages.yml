@@ -10,6 +10,9 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2
+        with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token
+          fetch-depth: 0 # otherwise, you will fail to push refs to dest repo
       
       # Set up Flutter
       - uses: subosito/flutter-action@v2
@@ -23,16 +26,23 @@ jobs:
           cd flutter_portfolio
           flutter config --enable-web
           flutter pub get
-          flutter build web --release --base-href "/flutter_portfolio/"
-          ls -la build/web  # Debug: verify build contents
+          flutter build web --release --base-href "/Personal-website/"
       
-      # Deploy to GitHub Pages
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      # Setup Git
+      - name: Setup Git
+        run: |
+          cd flutter_portfolio/build/web
+          git init
+          git config --local user.email "rohitkale523@gmail.com"
+          git config --local user.name "rohitk523"
+          git add .
+          git commit -m "Deploy to GitHub Pages"
+      
+      # Push to gh-pages branch
+      - name: Push to gh-pages
+        uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./flutter_portfolio/build/web
-          force_orphan: true
-          user_name: 'rohitk523'
-          user_email: 'rohitkale523@gmail.com'
-          commit_message: 'Deploy to GitHub Pages'
+          branch: gh-pages
+          force: true
+          directory: ./flutter_portfolio/build/web
