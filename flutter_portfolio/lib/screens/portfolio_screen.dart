@@ -182,23 +182,6 @@ class PortfolioScreen extends StatelessWidget {
       githubUrl: 'https://github.com/numidAi',
       imageUrl: 'assets/images/Multi-Schema-Microservice-Architecture.png',
     ),
-    // Original projects...
-    Project(
-      title: 'DocNest',
-      description:
-          'Cross-platform document management system for storing and organizing various types of documents (government, medical, educational) securely.',
-      technologies: [
-        'Python',
-        'FastAPI',
-        'Flutter',
-        'AWS',
-        'GitHub Actions',
-        'Docker',
-        'PostgreSQL'
-      ],
-      githubUrl: 'https://github.com/rohitk523/DocNest',
-      imageUrl: 'assets/images/DocNest.png',
-    ),
 
     // Add more projects as needed
   ];
