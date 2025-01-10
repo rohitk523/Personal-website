@@ -111,11 +111,11 @@ class PortfolioScreen extends StatelessWidget {
     Project(
       title: 'Enterprise RBAC System',
       description:
-          'Built a sophisticated Role-Based Access Control (RBAC) microservice with Casdoor integration. Implemented tenant management, analytics, and settings APIs. Features include complete user role management, tenant status controls, and comprehensive testing with Pytest.',
+          'Built a sophisticated Role-Based Access Control (RBAC) microservice with Casbin integration. Implemented tenant management, analytics, and settings APIs. Features include complete user role management, tenant status controls, and comprehensive testing with Pytest.',
       technologies: [
         'Python',
         'FastAPI',
-        'Casdoor',
+        'Casbin',
         'Pytest',
         'Microservices',
         'JWT',
@@ -177,7 +177,6 @@ class PortfolioScreen extends StatelessWidget {
         'Database Migration',
         'API Gateway',
         'Docker',
-        'Kubernetes'
       ],
       githubUrl: 'https://github.com/numidAi',
       imageUrl: 'assets/images/Multi-Schema-Microservice-Architecture.png',
