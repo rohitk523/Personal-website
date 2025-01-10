@@ -92,6 +92,113 @@ class PortfolioScreen extends StatelessWidget {
       githubUrl: 'https://github.com/rohitk523/ml-library',
       imageUrl: 'assets/images/ml-library.png',
     ),
+    Project(
+      title: 'Restaurant Management System',
+      description:
+          'Developed a comprehensive RESTful API using FastAPI for restaurant operations. Implemented advanced features including order management, menu control, ingredient tracking, reviews system, and promotional campaigns. Features include customer order tracking, staff analytics, and multi-modal ordering support.',
+      technologies: [
+        'FastAPI',
+        'Python',
+        'PostgreSQL',
+        'REST API',
+        'SQLAlchemy',
+        'Pydantic',
+        'JWT Auth'
+      ],
+      githubUrl: 'https://github.com/pritikabugga/restaurant-system',
+      imageUrl: 'assets/images/Restaurant-Management-System.png',
+    ),
+    Project(
+      title: 'Enterprise RBAC System',
+      description:
+          'Built a sophisticated Role-Based Access Control (RBAC) microservice with Casdoor integration. Implemented tenant management, analytics, and settings APIs. Features include complete user role management, tenant status controls, and comprehensive testing with Pytest.',
+      technologies: [
+        'Python',
+        'FastAPI',
+        'Casdoor',
+        'Pytest',
+        'Microservices',
+        'JWT',
+        'PostgreSQL'
+      ],
+      githubUrl: 'https://github.com/numidAi/rbac_ms',
+      imageUrl: 'assets/images/Enterprise-RBAC-System.png',
+    ),
+    Project(
+      title: 'Global Beach Finder',
+      description:
+          'Developed a Flutter-based travel application with Firebase backend for discovering beaches worldwide. Implemented comprehensive beach details including ratings, coordinates, and descriptions. Features robust search functionality and user reviews system.',
+      technologies: [
+        'Flutter',
+        'Firebase',
+        'Google Maps API',
+        'Cloud Firestore',
+        'Firebase Auth',
+        'Geolocation'
+      ],
+      githubUrl: 'https://github.com/rohitk523/beach-database',
+      imageUrl: 'assets/images/Global-Beach-Finder.png',
+    ),
+    Project(
+      title: 'PayPal Subscription Integration',
+      description:
+          'Implemented PayPal subscription integration in FlutterFlow, enabling monthly and yearly subscription plans. Created custom actions for payment processing and subscription management with Supabase backend integration.',
+      technologies: [
+        'FlutterFlow',
+        'PayPal API',
+        'Supabase',
+        'Custom Actions',
+        'Flutter',
+        'Payment Gateway'
+      ],
+      imageUrl: 'assets/images/Global-Beach-Finder.png',
+    ),
+    Project(
+      title: 'ChatGPT Chatbox',
+      description:
+          'Integrated ChatGPT with FlutterFlow to create a specialized chatbot for domain-specific interactions. Implemented context-aware responses and custom conversation flows.',
+      technologies: [
+        'FlutterFlow',
+        'ChatGPT API',
+        'Flutter',
+        'NLP',
+        'Custom Actions',
+        'REST API'
+      ],
+      imageUrl: 'assets/images/ChatGPT-Chatbox.png',
+    ),
+    Project(
+      title: 'Multi-Schema Microservice Architecture',
+      description:
+          'Designed and implemented a multi-schema architecture across microservices. Handled complex database operations, schema-specific logic, and data migration processes.',
+      technologies: [
+        'Microservices',
+        'PostgreSQL',
+        'Database Migration',
+        'API Gateway',
+        'Docker',
+        'Kubernetes'
+      ],
+      githubUrl: 'https://github.com/numidAi',
+      imageUrl: 'assets/images/Multi-Schema-Microservice-Architecture.png',
+    ),
+    // Original projects...
+    Project(
+      title: 'DocNest',
+      description:
+          'Cross-platform document management system for storing and organizing various types of documents (government, medical, educational) securely.',
+      technologies: [
+        'Python',
+        'FastAPI',
+        'Flutter',
+        'AWS',
+        'GitHub Actions',
+        'Docker',
+        'PostgreSQL'
+      ],
+      githubUrl: 'https://github.com/rohitk523/DocNest',
+      imageUrl: 'assets/images/DocNest.png',
+    ),
 
     // Add more projects as needed
   ];
