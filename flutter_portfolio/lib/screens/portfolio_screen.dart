@@ -151,7 +151,7 @@ class PortfolioScreen extends StatelessWidget {
         'Flutter',
         'Payment Gateway'
       ],
-      imageUrl: 'assets/images/Global-Beach-Finder.png',
+      imageUrl: 'assets/images/PayPal-Subscription-Integration.png',
     ),
     Project(
       title: 'ChatGPT Chatbox',

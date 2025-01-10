@@ -76,6 +76,12 @@ flutter:
     - assets/images/fastapi-render.png
     - assets/images/ml-library.png
     - assets/images/personal-website.png
+    - assets/images/Restaurant-Management-System.png
+    - assets/images/Enterprise-RBAC-System.png
+    - assets/images/Global-Beach-Finder.png
+    - assets/images/ChatGPT-Chatbox.png
+    - assets/images/Multi-Schema-Microservice-Architecture.png
+    - assets/images/PayPal-Subscription-Integration.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
