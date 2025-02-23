@@ -82,6 +82,7 @@ flutter:
     - assets/images/ChatGPT-Chatbox.png
     - assets/images/Multi-Schema-Microservice-Architecture.png
     - assets/images/PayPal-Subscription-Integration.png
+    - assets/images/astrology-automation.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

@@ -181,6 +181,22 @@ class PortfolioScreen extends StatelessWidget {
       githubUrl: 'https://github.com/numidAi',
       imageUrl: 'assets/images/Multi-Schema-Microservice-Architecture.png',
     ),
+    Project(
+      title: 'Automated Astrology Reading System',
+      description:
+          'Developed an end-to-end automated system for processing astrological readings. Features include payment processing integration, automated data extraction from forms, generation of personalized numerology readings and soulmate predictions, and automated document creation and email delivery.',
+      technologies: [
+        'n8n',
+        'FastAPI',
+        'OpenAI API',
+        'Google Workspace APIs',
+        'Gmail API',
+        'Automation',
+        'Razorpay Integration'
+      ],
+      // Note: You may want to add your own image path here
+      imageUrl: 'assets/images/astrology-automation.png',
+    ),
 
     // Add more projects as needed
   ];
