@@ -29,7 +29,7 @@ jobs:
           cd flutter_portfolio
           flutter config --enable-web
           flutter pub get
-          flutter build web --release --base-href "/Personal-website/"
+          flutter build web --release --base-href "/"
           
       - name: Debug build output
         run: |
