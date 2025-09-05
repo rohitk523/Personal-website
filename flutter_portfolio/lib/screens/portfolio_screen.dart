@@ -6,7 +6,43 @@ import '../widgets/project_card.dart';
 import '../models/project.dart';
 import '../utils/constants.dart';
 
-class PortfolioScreen extends StatelessWidget {
+class PortfolioScreen extends StatefulWidget {
+  @override
+  _PortfolioScreenState createState() => _PortfolioScreenState();
+}
+
+class _PortfolioScreenState extends State<PortfolioScreen> {
+  String selectedCategory = 'All';
+  
+  List<Project> get filteredProjects {
+    if (selectedCategory == 'All') {
+      return projects;
+    }
+    return projects.where((project) => _getProjectCategory(project) == selectedCategory).toList();
+  }
+  
+  String _getProjectCategory(Project project) {
+    // Categorize based on technologies
+    final techs = project.technologies.map((t) => t.toLowerCase()).toList();
+    
+    if (techs.any((t) => ['flutter', 'dart', 'react native', 'mobile'].contains(t))) {
+      return 'Mobile Apps';
+    }
+    if (techs.any((t) => ['machine learning', 'computer vision', 'ai', 'yolo', 'detectron2', 'pytorch', 'deepsort', 'sports analytics', 'trajectory analysis', 'object detection', 'opencv'].contains(t))) {
+      return 'AI & Computer Vision';
+    }
+    if (techs.any((t) => ['next.js', 'react', 'typescript', 'javascript', 'web', 'vercel', 'bun'].contains(t))) {
+      return 'Web Development';
+    }
+    if (techs.any((t) => ['fastapi', 'python', 'aws', 'microservices', 'backend', 'api development', 'postgresql', 'docker'].contains(t))) {
+      return 'Backend Systems';
+    }
+    if (techs.any((t) => ['healthcare tech', 'voice ai', 'livekit', 'multi-language', 'chat systems'].contains(t))) {
+      return 'Healthcare & AI';
+    }
+    return 'Backend Systems'; // Default category
+  }
+  
   final List<Project> projects = [
     Project(
       title: 'DocNest',
@@ -197,6 +233,115 @@ class PortfolioScreen extends StatelessWidget {
       // Note: You may want to add your own image path here
       imageUrl: 'assets/images/astrology-automation.png',
     ),
+    Project(
+      title: 'CellAssist Healthcare AI Platform',
+      description:
+          'Intelligent voice AI platform designed for healthcare operations, specializing in automated triage and patient assistance. Features real-time conversational AI agents with multilingual support, noise cancellation, and LiveKit integration for seamless healthcare communication.',
+      technologies: [
+        'Python',
+        'LiveKit',
+        'FastAPI',
+        'Voice AI',
+        'Healthcare Tech',
+        'Multi-language',
+        'Real-time Communication'
+      ],
+      imageUrl: 'assets/images/cellassist-platform.png',
+    ),
+    Project(
+      title: 'Basketball Video Analysis Studio',
+      description:
+          'Production-ready FastAPI system for analyzing dual-camera basketball videos. Features advanced DeepSORT tracking with 80% reduction in ID switching, AI-powered shot detection with 97% accuracy, bird\'s eye view generation, and cross-camera player association for comprehensive game analytics.',
+      technologies: [
+        'Python',
+        'FastAPI',
+        'Computer Vision',
+        'DeepSORT',
+        'YOLO11',
+        'OpenCV',
+        'Sports Analytics',
+        'Real-time Processing'
+      ],
+      imageUrl: 'assets/images/basketball-analysis-studio.png',
+    ),
+    Project(
+      title: 'AI Basketball Shot Detection System',
+      description:
+          'Advanced AI system for basketball shot detection and tracking using YOLOv8/v11 models. Achieves 95% score detection accuracy and 97% shot detection accuracy. Features configurable parameters for different camera angles, real-time processing, and comprehensive trajectory analysis.',
+      technologies: [
+        'Python',
+        'YOLOv8/v11',
+        'OpenCV',
+        'Computer Vision',
+        'Real-time Processing',
+        'Sports Analytics',
+        'Trajectory Analysis'
+      ],
+      imageUrl: 'assets/images/ai-basketball-detection.png',
+    ),
+    Project(
+      title: 'GenAI Backend (RexAI)',
+      description:
+          'Highly scalable FastAPI application serving as backend for RexAI file classification system. Features hybrid processing with lexical techniques and LLM-based approaches, AWS Lambda integration, OpenSearch indexing, and Step Functions for high-volume workloads.',
+      technologies: [
+        'Python',
+        'FastAPI',
+        'AWS Lambda',
+        'OpenSearch',
+        'LLM Integration',
+        'Step Functions',
+        'File Classification',
+        'Scalable Architecture'
+      ],
+      imageUrl: 'assets/images/genai-backend.png',
+    ),
+    Project(
+      title: 'NXChat Backend API',
+      description:
+          'Robust chat application API built with FastAPI and Python. Features comprehensive dataset management, file filtering utilities, user profile endpoints, and AWS integration. Includes state machine implementation and advanced chat query processing capabilities.',
+      technologies: [
+        'Python',
+        'FastAPI',
+        'AWS Services',
+        'Chat Systems',
+        'State Machine',
+        'Dataset Management',
+        'File Processing',
+        'API Development'
+      ],
+      imageUrl: 'assets/images/nxchat-backend.png',
+    ),
+    Project(
+      title: 'CellBot Backend API',
+      description:
+          'Web services API for CellBot featuring comprehensive dependency management with Poetry, WeasyPrint integration for document generation, and robust testing framework. Includes development and production server configurations with environment variable management.',
+      technologies: [
+        'Python',
+        'FastAPI',
+        'Poetry',
+        'WeasyPrint',
+        'Document Generation',
+        'Testing Framework',
+        'Environment Management'
+      ],
+      imageUrl: 'assets/images/cellbot-backend.png',
+    ),
+    Project(
+      title: 'NXChatApp Production System',
+      description:
+          'Production-grade chat application with comprehensive AWS integration, Conda environment management, and scalable architecture. Features dataset content retrieval, file processing capabilities, and extensive testing framework for enterprise deployment.',
+      technologies: [
+        'Python',
+        'FastAPI',
+        'AWS Integration',
+        'Conda',
+        'Enterprise Architecture',
+        'Dataset Processing',
+        'Production Deployment',
+        'Testing Framework'
+      ],
+      imageUrl: 'assets/images/nxchatapp-system.png',
+    ),
 
     // Add more projects as needed
   ];
@@ -212,8 +357,8 @@ class PortfolioScreen extends StatelessWidget {
           SizedBox(height: 40),
           // _buildGitHubSection(context), // Add this new section
           // SizedBox(height: 40),
-          // _buildProjectCategories(context),
-          // SizedBox(height: 40),
+          _buildProjectCategories(context),
+          SizedBox(height: 40),
           _buildProjectsGrid(context),
         ],
       ),
@@ -297,54 +442,64 @@ class PortfolioScreen extends StatelessWidget {
   //           style: Theme.of(context).textTheme.bodyLarge,
   //         ),
   //         SizedBox(height: 24),
-  //         GithubContributions(username: 'rohitk523'),
+  //         GithubContributions(username: 'rohitmk523'),
   //       ],
   //     ),
   //   );
   // }
 
-  // Widget _buildProjectCategories(BuildContext context) {
-  //   final categories = [
-  //     'All',
-  //     'Machine Learning',
-  //     'Web Development',
-  //     'Mobile Apps'
-  //   ];
+  Widget _buildProjectCategories(BuildContext context) {
+    final categories = [
+      'All',
+      'AI & Computer Vision',
+      'Healthcare & AI',
+      'Backend Systems',
+      'Web Development',
+      'Mobile Apps'
+    ];
 
-  //   return Container(
-  //     height: 40,
-  //     child: ListView.separated(
-  //       scrollDirection: Axis.horizontal,
-  //       itemCount: categories.length,
-  //       separatorBuilder: (context, index) => SizedBox(width: 12),
-  //       itemBuilder: (context, index) {
-  //         return Container(
-  //           padding: EdgeInsets.symmetric(horizontal: 20),
-  //           decoration: BoxDecoration(
-  //             color: index == 0
-  //                 ? Theme.of(context).primaryColor
-  //                 : Theme.of(context).cardColor,
-  //             borderRadius: BorderRadius.circular(20),
-  //             border: Border.all(
-  //               color: Theme.of(context).primaryColor.withOpacity(0.2),
-  //             ),
-  //           ),
-  //           child: Center(
-  //             child: Text(
-  //               categories[index],
-  //               style: TextStyle(
-  //                 color: index == 0
-  //                     ? Colors.white
-  //                     : Theme.of(context).textTheme.bodyLarge?.color,
-  //                 fontWeight: FontWeight.w500,
-  //               ),
-  //             ),
-  //           ),
-  //         );
-  //       },
-  //     ),
-  //   );
-  // }
+    return Container(
+      height: 40,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        itemCount: categories.length,
+        separatorBuilder: (context, index) => SizedBox(width: 12),
+        itemBuilder: (context, index) {
+          final isSelected = categories[index] == selectedCategory;
+          return GestureDetector(
+            onTap: () {
+              setState(() {
+                selectedCategory = categories[index];
+              });
+            },
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              decoration: BoxDecoration(
+                color: isSelected
+                    ? Theme.of(context).primaryColor
+                    : Theme.of(context).cardColor,
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                  color: Theme.of(context).primaryColor.withOpacity(0.2),
+                ),
+              ),
+              child: Center(
+                child: Text(
+                  categories[index],
+                  style: TextStyle(
+                    color: isSelected
+                        ? Colors.white
+                        : Theme.of(context).textTheme.bodyLarge?.color,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
 
   Widget _buildProjectsGrid(BuildContext context) {
     return MasonryGridView.count(
@@ -353,9 +508,9 @@ class PortfolioScreen extends StatelessWidget {
       crossAxisSpacing: 30,
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
-      itemCount: projects.length,
+      itemCount: filteredProjects.length,
       itemBuilder: (context, index) {
-        return ProjectCard(project: projects[index]);
+        return ProjectCard(project: filteredProjects[index]);
       },
     );
   }

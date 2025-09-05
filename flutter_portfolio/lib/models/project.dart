@@ -5,6 +5,7 @@ class Project {
   final String? githubUrl;
   final String? liveUrl;
   final String? imageUrl;
+  final String? category;
 
   Project({
     required this.title,
@@ -13,6 +14,7 @@ class Project {
     this.githubUrl,
     this.liveUrl,
     this.imageUrl,
+    this.category,
   });
 
   factory Project.fromJson(Map<String, dynamic> json) {
@@ -23,6 +25,7 @@ class Project {
       githubUrl: json['githubUrl'] as String?,
       liveUrl: json['liveUrl'] as String?,
       imageUrl: json['imageUrl'] as String?,
+      category: json['category'] as String?,
     );
   }
 
@@ -34,6 +37,7 @@ class Project {
       'githubUrl': githubUrl,
       'liveUrl': liveUrl,
       'imageUrl': imageUrl,
+      'category': category,
     };
   }
 }
