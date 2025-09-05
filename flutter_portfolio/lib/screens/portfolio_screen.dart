@@ -28,13 +28,13 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
       case 'Mobile Apps':
         return techs.any((t) => ['flutter', 'dart', 'react native', 'mobile'].contains(t));
       case 'AI & Computer Vision':
-        return techs.any((t) => ['machine learning', 'computer vision', 'ai', 'yolo', 'detectron2', 'pytorch', 'deepsort', 'sports analytics', 'trajectory analysis', 'object detection', 'opencv', 'yolov8', 'yolov11', 'roboflow', 'gemini'].contains(t));
+        return techs.any((t) => ['machine learning', 'computer vision', 'ai', 'yolo', 'detectron2', 'pytorch', 'deepsort', 'object detection', 'opencv', 'yolov8', 'yolov11', 'roboflow', 'gemini', 'ultralytics', 'numpy', 'matplotlib'].contains(t));
       case 'Web Development':
         return techs.any((t) => ['next.js', 'react', 'typescript', 'javascript', 'web', 'vercel', 'bun', 'shadcn/ui', 'github pages'].contains(t));
       case 'Backend Systems':
-        return techs.any((t) => ['fastapi', 'python', 'aws', 'microservices', 'backend', 'api development', 'postgresql', 'docker', 'aws lambda', 'opensearch', 'step functions', 'poetry'].contains(t));
+        return techs.any((t) => ['fastapi', 'python', 'aws', 'microservices', 'backend', 'api development', 'postgresql', 'docker', 'aws lambda', 'aws step functions', 'aws s3', 'aws ec2', 'aws opensearch', 'opensearch', 'poetry', 'pydantic', 'uvicorn', 'boto3', 'gunicorn', 'pytest', 'asyncio'].contains(t));
       case 'Healthcare & AI':
-        return techs.any((t) => ['healthcare tech', 'voice ai', 'livekit', 'multi-language', 'chat systems'].contains(t));
+        return techs.any((t) => ['healthcare tech', 'voice ai', 'livekit', 'webrtc', 'real-time audio'].contains(t));
       default:
         return false;
     }
@@ -239,7 +239,10 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
         'LiveKit',
         'FastAPI',
         'Voice AI',
-        'Healthcare Tech'
+        'WebRTC',
+        'Real-time Audio',
+        'Docker',
+        'AWS EC2'
       ],
       imageUrl: 'assets/images/cellassist-platform.png',
     ),
@@ -253,7 +256,10 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
         'Computer Vision',
         'DeepSORT',
         'YOLO11',
-        'OpenCV'
+        'OpenCV',
+        'PyTorch',
+        'NumPy',
+        'Asyncio'
       ],
       imageUrl: 'assets/images/basketball-analysis-studio.png',
     ),
@@ -266,7 +272,10 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
         'YOLOv8',
         'YOLOv11',
         'OpenCV',
-        'Computer Vision'
+        'Computer Vision',
+        'Ultralytics',
+        'NumPy',
+        'Matplotlib'
       ],
       imageUrl: 'assets/images/ai-basketball-detection.png',
     ),
@@ -278,8 +287,11 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
         'Python',
         'FastAPI',
         'AWS Lambda',
+        'AWS Step Functions',
         'OpenSearch',
-        'Step Functions'
+        'Pydantic',
+        'Uvicorn',
+        'Boto3'
       ],
       imageUrl: 'assets/images/genai-backend.png',
     ),
@@ -290,8 +302,11 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
       technologies: [
         'Python',
         'FastAPI',
-        'AWS',
-        'Chat Systems'
+        'AWS S3',
+        'AWS OpenSearch',
+        'Pydantic',
+        'Uvicorn',
+        'Pytest'
       ],
       imageUrl: 'assets/images/nxchat-backend.png',
     ),
@@ -303,7 +318,10 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
         'Python',
         'FastAPI',
         'Poetry',
-        'WeasyPrint'
+        'WeasyPrint',
+        'Pydantic',
+        'Uvicorn',
+        'Pytest'
       ],
       imageUrl: 'assets/images/cellbot-backend.png',
     ),
@@ -314,8 +332,11 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
       technologies: [
         'Python',
         'FastAPI',
-        'AWS',
-        'Conda'
+        'AWS EC2',
+        'AWS S3',
+        'Conda',
+        'Gunicorn',
+        'Pytest'
       ],
       imageUrl: 'assets/images/nxchatapp-system.png',
     ),
