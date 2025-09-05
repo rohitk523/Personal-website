@@ -83,6 +83,13 @@ flutter:
     - assets/images/Multi-Schema-Microservice-Architecture.png
     - assets/images/PayPal-Subscription-Integration.png
     - assets/images/astrology-automation.png
+    - assets/images/basketball-analysis-studio.png
+    - assets/images/ai-basketball-detection.png
+    - assets/images/genai-backend.png
+    - assets/images/nxchat-backend.png
+    - assets/images/cellbot-backend.png
+    - assets/images/nxchatapp-system.png
+    - assets/images/cellassist-platform.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
