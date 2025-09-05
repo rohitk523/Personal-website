@@ -18,29 +18,26 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
     if (selectedCategory == 'All') {
       return projects;
     }
-    return projects.where((project) => _getProjectCategory(project) == selectedCategory).toList();
+    return projects.where((project) => _projectBelongsToCategory(project, selectedCategory)).toList();
   }
   
-  String _getProjectCategory(Project project) {
-    // Categorize based on technologies
+  bool _projectBelongsToCategory(Project project, String category) {
     final techs = project.technologies.map((t) => t.toLowerCase()).toList();
     
-    if (techs.any((t) => ['flutter', 'dart', 'react native', 'mobile'].contains(t))) {
-      return 'Mobile Apps';
+    switch (category) {
+      case 'Mobile Apps':
+        return techs.any((t) => ['flutter', 'dart', 'react native', 'mobile'].contains(t));
+      case 'AI & Computer Vision':
+        return techs.any((t) => ['machine learning', 'computer vision', 'ai', 'yolo', 'detectron2', 'pytorch', 'deepsort', 'sports analytics', 'trajectory analysis', 'object detection', 'opencv', 'yolov8', 'yolov11', 'roboflow', 'gemini'].contains(t));
+      case 'Web Development':
+        return techs.any((t) => ['next.js', 'react', 'typescript', 'javascript', 'web', 'vercel', 'bun', 'shadcn/ui', 'github pages'].contains(t));
+      case 'Backend Systems':
+        return techs.any((t) => ['fastapi', 'python', 'aws', 'microservices', 'backend', 'api development', 'postgresql', 'docker', 'aws lambda', 'opensearch', 'step functions', 'poetry'].contains(t));
+      case 'Healthcare & AI':
+        return techs.any((t) => ['healthcare tech', 'voice ai', 'livekit', 'multi-language', 'chat systems'].contains(t));
+      default:
+        return false;
     }
-    if (techs.any((t) => ['machine learning', 'computer vision', 'ai', 'yolo', 'detectron2', 'pytorch', 'deepsort', 'sports analytics', 'trajectory analysis', 'object detection', 'opencv'].contains(t))) {
-      return 'AI & Computer Vision';
-    }
-    if (techs.any((t) => ['next.js', 'react', 'typescript', 'javascript', 'web', 'vercel', 'bun'].contains(t))) {
-      return 'Web Development';
-    }
-    if (techs.any((t) => ['fastapi', 'python', 'aws', 'microservices', 'backend', 'api development', 'postgresql', 'docker'].contains(t))) {
-      return 'Backend Systems';
-    }
-    if (techs.any((t) => ['healthcare tech', 'voice ai', 'livekit', 'multi-language', 'chat systems'].contains(t))) {
-      return 'Healthcare & AI';
-    }
-    return 'Backend Systems'; // Default category
   }
   
   final List<Project> projects = [
@@ -242,9 +239,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
         'LiveKit',
         'FastAPI',
         'Voice AI',
-        'Healthcare Tech',
-        'Multi-language',
-        'Real-time Communication'
+        'Healthcare Tech'
       ],
       imageUrl: 'assets/images/cellassist-platform.png',
     ),
@@ -258,9 +253,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
         'Computer Vision',
         'DeepSORT',
         'YOLO11',
-        'OpenCV',
-        'Sports Analytics',
-        'Real-time Processing'
+        'OpenCV'
       ],
       imageUrl: 'assets/images/basketball-analysis-studio.png',
     ),
@@ -270,12 +263,10 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
           'Advanced AI system for basketball shot detection and tracking using YOLOv8/v11 models. Achieves 95% score detection accuracy and 97% shot detection accuracy. Features configurable parameters for different camera angles, real-time processing, and comprehensive trajectory analysis.',
       technologies: [
         'Python',
-        'YOLOv8/v11',
+        'YOLOv8',
+        'YOLOv11',
         'OpenCV',
-        'Computer Vision',
-        'Real-time Processing',
-        'Sports Analytics',
-        'Trajectory Analysis'
+        'Computer Vision'
       ],
       imageUrl: 'assets/images/ai-basketball-detection.png',
     ),
@@ -288,10 +279,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
         'FastAPI',
         'AWS Lambda',
         'OpenSearch',
-        'LLM Integration',
-        'Step Functions',
-        'File Classification',
-        'Scalable Architecture'
+        'Step Functions'
       ],
       imageUrl: 'assets/images/genai-backend.png',
     ),
@@ -302,12 +290,8 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
       technologies: [
         'Python',
         'FastAPI',
-        'AWS Services',
-        'Chat Systems',
-        'State Machine',
-        'Dataset Management',
-        'File Processing',
-        'API Development'
+        'AWS',
+        'Chat Systems'
       ],
       imageUrl: 'assets/images/nxchat-backend.png',
     ),
@@ -319,10 +303,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
         'Python',
         'FastAPI',
         'Poetry',
-        'WeasyPrint',
-        'Document Generation',
-        'Testing Framework',
-        'Environment Management'
+        'WeasyPrint'
       ],
       imageUrl: 'assets/images/cellbot-backend.png',
     ),
@@ -333,12 +314,8 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
       technologies: [
         'Python',
         'FastAPI',
-        'AWS Integration',
-        'Conda',
-        'Enterprise Architecture',
-        'Dataset Processing',
-        'Production Deployment',
-        'Testing Framework'
+        'AWS',
+        'Conda'
       ],
       imageUrl: 'assets/images/nxchatapp-system.png',
     ),
