@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import '../utils/constants.dart';
 import '../widgets/social_links.dart';
+import '../theme/app_theme.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -28,6 +29,8 @@ class HomeScreen extends StatelessWidget {
             SizedBox(height: isSmallScreen ? 20 : 30),
             _buildMainContent(context),
             SizedBox(height: isSmallScreen ? 30 : 40),
+            _buildHighlightsRow(context),
+            SizedBox(height: isSmallScreen ? 30 : 40),
             _buildSocialSection(context),
           ],
         ),
@@ -40,17 +43,25 @@ class HomeScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          padding: EdgeInsets.symmetric(horizontal: 14, vertical: 7),
           decoration: BoxDecoration(
-            color: Theme.of(context).primaryColor.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(20),
+            gradient: LinearGradient(
+              colors: [
+                AppTheme.gradientStart.withOpacity(0.15),
+                AppTheme.gradientEnd.withOpacity(0.15),
+              ],
+            ),
+            borderRadius: BorderRadius.circular(24),
+            border: Border.all(
+              color: Theme.of(context).primaryColor.withOpacity(0.3),
+            ),
           ),
           child: Text(
             'Hi, my name is',
             style: TextStyle(
               color: Theme.of(context).primaryColor,
               fontSize: 16,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w600,
             ),
           ),
         ),
@@ -65,29 +76,34 @@ class HomeScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          Constants.name,
-          style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                fontSize: isSmallScreen ? 32 : 42,
-              ),
+        // Gradient name
+        ShaderMask(
+          shaderCallback: (bounds) => LinearGradient(
+            colors: [AppTheme.gradientStart, AppTheme.gradientEnd],
+          ).createShader(bounds),
+          child: Text(
+            Constants.name,
+            style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                  fontSize: isSmallScreen ? 36 : 48,
+                  color: Colors.white,
+                ),
+          ),
         ),
         SizedBox(height: 15),
-        // Removed fixed height container
+        // Multiple animated titles
         AnimatedTextKit(
-          animatedTexts: [
+          animatedTexts: Constants.animatedTitles.map((title) =>
             TypewriterAnimatedText(
-              Constants.title,
+              title,
               textStyle: Theme.of(context).textTheme.displayMedium!.copyWith(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.grey[400]
-                        : Colors.grey[700],
-                    fontSize: isSmallScreen ? 24 : 32,
+                    color: Theme.of(context).colorScheme.secondary,
+                    fontSize: isSmallScreen ? 22 : 30,
                   ),
-              speed: Duration(milliseconds: 100),
+              speed: Duration(milliseconds: 80),
             ),
-          ],
-          totalRepeatCount: 1,
-          displayFullTextOnTap: true,
+          ).toList(),
+          repeatForever: true,
+          pause: Duration(milliseconds: 1500),
         ),
         SizedBox(height: 30),
         Container(
@@ -96,13 +112,9 @@ class HomeScreen extends StatelessWidget {
           decoration: BoxDecoration(
             color: Theme.of(context).cardColor,
             borderRadius: BorderRadius.circular(16),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.05),
-                blurRadius: 10,
-                offset: Offset(0, 4),
-              ),
-            ],
+            border: Border.all(
+              color: Theme.of(context).dividerColor,
+            ),
           ),
           child: Text(
             Constants.aboutDescription,
@@ -115,15 +127,60 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
+  Widget _buildHighlightsRow(BuildContext context) {
+    final isSmallScreen = MediaQuery.of(context).size.width < 600;
+    final highlights = [
+      {'number': '5+', 'label': 'Years Experience'},
+      {'number': '97%', 'label': 'CV Accuracy'},
+      {'number': '30+', 'label': 'Projects Built'},
+      {'number': 'AWS', 'label': 'SA Certified'},
+    ];
+
+    return Wrap(
+      spacing: 16,
+      runSpacing: 16,
+      children: highlights.map((h) => Container(
+        width: isSmallScreen ? (MediaQuery.of(context).size.width - 56) / 2 : 160,
+        padding: EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: Theme.of(context).cardColor,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: Theme.of(context).dividerColor),
+        ),
+        child: Column(
+          children: [
+            ShaderMask(
+              shaderCallback: (bounds) => LinearGradient(
+                colors: [AppTheme.gradientStart, AppTheme.gradientEnd],
+              ).createShader(bounds),
+              child: Text(
+                h['number']!,
+                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+            ),
+            SizedBox(height: 4),
+            Text(
+              h['label']!,
+              style: Theme.of(context).textTheme.bodyMedium,
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      )).toList(),
+    );
+  }
+
   Widget _buildSocialSection(BuildContext context) {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: Theme.of(context).brightness == Brightness.dark
-            ? Theme.of(context).cardColor.withOpacity(0.5)
-            : Theme.of(context).cardColor,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: Theme.of(context).dividerColor),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

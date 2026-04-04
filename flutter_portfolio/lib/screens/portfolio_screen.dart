@@ -405,7 +405,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
           ),
           SizedBox(height: 16),
           Text(
-            'A collection of my most recent projects showcasing my expertise in Machine Learning, Flutter, and Full-stack development.',
+            'Production-grade AI/ML systems, computer vision pipelines, and full-stack applications built with Python, FastAPI, PyTorch, and cloud infrastructure.',
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(height: 1.6),
           ),
         ],

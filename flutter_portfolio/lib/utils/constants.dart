@@ -1,10 +1,18 @@
 class Constants {
   // Personal Information
   static const String name = "Rohit Kale";
-  static const String title = "Full Stack Developer & Solutions Architect";
+  static const String title = "AI/ML Engineer";
   static const String email = "rohitkale523@gmail.com";
   static const String location = "Pune, Maharashtra, India";
-  static const String nickname = "Data Cafe";
+  static const String nickname = "RK";
+
+  // Typewriter titles
+  static const List<String> animatedTitles = [
+    "AI/ML Engineer",
+    "Computer Vision Engineer",
+    "Full Stack Developer",
+    "Cloud Architect",
+  ];
 
   // Social Links
   static const String githubUrl = "https://github.com/rohitk523";
@@ -19,19 +27,18 @@ class Constants {
   static const String blogTitle = "Blog";
 
   // About Section
-  static const String aboutDescription = """
-A Software Engineer specializing in end-to-end solution architecture, 
-from cloud infrastructure to user interfaces. 
-Proficient in Python backend development, cloud deployment with AWS, containerization with Docker, and cross-platform application development using Flutter. 
-Combining academic excellence from Liverpool John Moores University with industry experience, I'm now crafting innovative solutions as an independent developer and entrepreneur. 
-My diverse skill set allows me to architect, build, and deploy complete solutions while pursuing both freelance projects and my own ventures.""";
+  static const String aboutDescription = """AI/ML Engineer with 5+ years of experience building production-grade computer vision, NLP, and full-stack AI systems. At Cellstrat AI, I built the UBall basketball analytics platform achieving 97% shot detection accuracy using YOLOv11, SAM2, and dual-angle fusion deployed on NVIDIA Jetson and GCP.
+
+I specialize in deploying end-to-end ML pipelines, from model training to production serving, using Python, FastAPI, PyTorch, Docker, and cloud infrastructure (AWS & GCP). My work spans real-time computer vision systems, Voice AI healthcare platforms, RAG-powered chat applications, and scalable microservice architectures.
+
+MS in Artificial Intelligence (Liverpool John Moores) | PGD ML & AI (IIIT Bangalore) | AWS Certified Solutions Architect""";
 
   // Skills Categories
   static const List<String> skillCategories = [
-    "Programming & Tools",
-    "Machine Learning Techniques",
-    "Data Analysis",
-    "Cloud & Deployment"
+    "AI & ML",
+    "Backend & APIs",
+    "Cloud & DevOps",
+    "Frontend"
   ];
 
   // Animation Durations
