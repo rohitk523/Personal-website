@@ -28,13 +28,13 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
       case 'Mobile Apps':
         return techs.any((t) => ['flutter', 'dart', 'react native', 'mobile'].contains(t));
       case 'AI & Computer Vision':
-        return techs.any((t) => ['machine learning', 'computer vision', 'ai', 'yolo', 'detectron2', 'pytorch', 'deepsort', 'object detection', 'opencv', 'yolov8', 'yolov11', 'roboflow', 'gemini', 'ultralytics', 'numpy', 'matplotlib'].contains(t));
+        return techs.any((t) => ['machine learning', 'computer vision', 'ai', 'yolo', 'detectron2', 'pytorch', 'deepsort', 'object detection', 'opencv', 'yolov8', 'yolov11', 'yolo11', 'roboflow', 'gemini', 'ultralytics', 'numpy', 'matplotlib', 'sam2', 'bytetrack', 'vlm', 'vertex ai', 'gemini ai', 'homography', 'uwb', 'ffmpeg', 'edge computing', 'nvidia jetson', 'audio processing', 'openai realtime api'].contains(t));
       case 'Web Development':
-        return techs.any((t) => ['next.js', 'react', 'typescript', 'javascript', 'web', 'vercel', 'bun', 'shadcn/ui', 'github pages'].contains(t));
+        return techs.any((t) => ['next.js', 'react', 'typescript', 'javascript', 'web', 'vercel', 'bun', 'shadcn/ui', 'github pages', 'clerk', 'nextauth', 'tailwind css', 'motion', 'cloudflare workers'].contains(t));
       case 'Backend Systems':
-        return techs.any((t) => ['fastapi', 'python', 'aws', 'microservices', 'backend', 'api development', 'postgresql', 'docker', 'aws lambda', 'aws step functions', 'aws s3', 'aws ec2', 'aws opensearch', 'opensearch', 'poetry', 'pydantic', 'uvicorn', 'boto3', 'gunicorn', 'pytest', 'asyncio'].contains(t));
+        return techs.any((t) => ['fastapi', 'python', 'aws', 'microservices', 'backend', 'api development', 'postgresql', 'docker', 'aws lambda', 'aws step functions', 'aws s3', 'aws ec2', 'aws opensearch', 'opensearch', 'poetry', 'pydantic', 'uvicorn', 'boto3', 'gunicorn', 'pytest', 'asyncio', 'celery', 'redis', 'sqlalchemy', 'supabase', 'cloudflare r2', 'prometheus', 'sentry', 'flask', 'ble', 'gopro sdk', 'websocket', 'google cloud workflows', 'cloud run'].contains(t));
       case 'Healthcare & AI':
-        return techs.any((t) => ['healthcare tech', 'voice ai', 'livekit', 'webrtc', 'real-time audio'].contains(t));
+        return techs.any((t) => ['healthcare tech', 'voice ai', 'livekit', 'webrtc', 'real-time audio', 'openai realtime api', 'audio processing'].contains(t));
       default:
         return false;
     }
@@ -341,7 +341,213 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
       imageUrl: 'assets/images/nxchatapp-system.png',
     ),
 
-    // Add more projects as needed
+    // === Cellstrat Projects ===
+    Project(
+      title: 'UBall Player Tracking System',
+      description:
+          'Complete basketball player tracking pipeline using YOLO11 + SAM2 + ByteTrack. Features pixel-perfect player segmentation, enhanced tracking with mask features for superior ID retention, and multiple optimization presets (Fast/Balanced/Quality) for different use cases.',
+      technologies: [
+        'Python',
+        'YOLO11',
+        'SAM2',
+        'ByteTrack',
+        'PyTorch',
+        'OpenCV',
+        'Computer Vision',
+      ],
+    ),
+    Project(
+      title: 'UBall Court Mapping System',
+      description:
+          'Basketball court tracking system combining UWB (Ultra-Wideband) tag positioning with YOLOv11 video analysis. Features automatic court geometry extraction from DXF files, homography computation for video-to-court calibration, and real-time player-to-tag matching.',
+      technologies: [
+        'Python',
+        'FastAPI',
+        'YOLOv11',
+        'SAM2',
+        'UWB',
+        'OpenCV',
+        'PyTorch',
+        'Homography',
+      ],
+    ),
+    Project(
+      title: 'UBall VLM Game Analysis (Gemini 3.0 Pro)',
+      description:
+          'Automated basketball game analysis using Google Gemini 3.0 Pro Vision Language Model. Processes multi-angle footage at 5 FPS to detect events (shots, assists, rebounds, fouls, steals, blocks), identify player numbers and team colors, and generate timestamped play-by-play JSON output.',
+      technologies: [
+        'Python',
+        'Gemini',
+        'VLM',
+        'Computer Vision',
+        'AI',
+        'Google Cloud',
+      ],
+    ),
+    Project(
+      title: 'Basketball Annotation Pipeline',
+      description:
+          'End-to-end pipeline for processing basketball game videos and fine-tuning Gemini 2.5 Pro models via Vertex AI. Features parallel processing with Google Cloud Run Jobs, smart skip logic for extracted clips, and Supabase integration for play metadata.',
+      technologies: [
+        'Python',
+        'FastAPI',
+        'Vertex AI',
+        'Cloud Run',
+        'Google Cloud Workflows',
+        'Supabase',
+        'Docker',
+      ],
+    ),
+    Project(
+      title: 'UBall Dual-Angle Shot Detection',
+      description:
+          'Dual-angle basketball shot detection system combining near (88% accuracy) and far (68% accuracy) camera feeds using YOLOv11. Smart fusion algorithm with confidence-based weighting and specialist override logic achieves >90% matched shot accuracy.',
+      technologies: [
+        'Python',
+        'YOLOv11',
+        'Computer Vision',
+        'OpenCV',
+        'Supabase',
+        'NumPy',
+        'SciPy',
+      ],
+    ),
+    Project(
+      title: 'Multi-Angle Video Ingestion Pipeline',
+      description:
+          'Complete solution for processing multi-angle basketball footage from GoPro cameras. Built for NVIDIA Jetson Orin Nano with GPU-accelerated 4K compression, multi-camera synchronization via timestamp-based UUIDs, real-time WebSocket progress tracking, and S3 multipart upload.',
+      technologies: [
+        'Python',
+        'FastAPI',
+        'NVIDIA Jetson',
+        'FFmpeg',
+        'AWS S3',
+        'WebSocket',
+        'Edge Computing',
+      ],
+    ),
+    Project(
+      title: 'UBall Data Collection Platform',
+      description:
+          'Split-screen video annotation tool with AI-assisted play classification. Built with Next.js App Router and Edge API routes, featuring Google Gemini AI for automated play classification, Supabase auth with RLS, and AWS S3 presigned URL video management.',
+      technologies: [
+        'Next.js',
+        'React',
+        'TypeScript',
+        'Supabase',
+        'Google Gemini',
+        'AWS S3',
+        'Tailwind CSS',
+      ],
+    ),
+    Project(
+      title: 'UBall Annotation Tool Backend',
+      description:
+          'FastAPI backend for the UBall video annotation platform. Features Celery + Redis background job processing, Google Gemini AI for play classification, Supabase authentication, and Docker Compose deployment with full async support.',
+      technologies: [
+        'Python',
+        'FastAPI',
+        'Celery',
+        'Redis',
+        'Supabase',
+        'Gemini AI',
+        'Docker',
+      ],
+    ),
+    Project(
+      title: 'UBall Core Platform',
+      description:
+          'Production FastAPI backend for UBall with async SQLAlchemy ORM, Alembic migrations, CloudFlare R2 (zero egress) + Stream (video CDN), Celery + Redis task queues, Firebase FCM push notifications, and Prometheus + Sentry monitoring.',
+      technologies: [
+        'Python',
+        'FastAPI',
+        'SQLAlchemy',
+        'Celery',
+        'Redis',
+        'CloudFlare R2',
+        'Prometheus',
+        'Sentry',
+        'Docker',
+      ],
+    ),
+    Project(
+      title: 'UBall Dashboard',
+      description:
+          'Modern Next.js 15 dashboard for UBall basketball analytics. Built with React 19, NextAuth, shadcn/ui, Radix UI, and deployed on Cloudflare Workers. Features video management, player statistics, game analytics, and real-time data visualization.',
+      technologies: [
+        'Next.js',
+        'React',
+        'TypeScript',
+        'NextAuth',
+        'shadcn/ui',
+        'Tailwind CSS',
+        'Cloudflare Workers',
+      ],
+    ),
+    Project(
+      title: 'CellAssist V2 - Voice AI Bot',
+      description:
+          'Production-ready voice AI bot bridging Exotel WebSocket streaming with OpenAI Realtime API for speech-to-speech phone conversations. Features 200ms audio buffering, noise suppression, smart interruption handling, and 24kHz PCM16 audio quality. Deployed on AWS Mumbai for lowest latency.',
+      technologies: [
+        'Python',
+        'OpenAI Realtime API',
+        'WebSocket',
+        'FastAPI',
+        'Docker',
+        'AWS EC2',
+        'Audio Processing',
+      ],
+    ),
+    Project(
+      title: 'CellBot Web App',
+      description:
+          'Modern Next.js chatbot frontend with Clerk authentication, shadcn/ui components, real-time markdown rendering, and motion animations. Full-featured chat interface with conversation history and PDF report generation.',
+      technologies: [
+        'Next.js',
+        'React',
+        'TypeScript',
+        'Clerk',
+        'shadcn/ui',
+        'Tailwind CSS',
+        'Motion',
+      ],
+    ),
+    Project(
+      title: 'GoPro Automation System',
+      description:
+          'Automated GoPro camera control system for basketball video capture. Backend uses Flask with BLE (Bluetooth Low Energy) for camera control, multi-camera coordination with Firebase sync, and S3 upload pipeline. Includes Next.js dashboard for game management.',
+      technologies: [
+        'Python',
+        'Flask',
+        'BLE',
+        'Next.js',
+        'Firebase',
+        'AWS S3',
+        'GoPro SDK',
+      ],
+    ),
+    Project(
+      title: 'BizJet Backend',
+      description:
+          'Business application backend with FFmpeg media conversion pipeline, Poetry dependency management, and Docker containerization for production deployment.',
+      technologies: [
+        'Python',
+        'FastAPI',
+        'FFmpeg',
+        'Poetry',
+        'Docker',
+      ],
+    ),
+    Project(
+      title: 'E-Invoice System',
+      description:
+          'Electronic invoicing system for automated invoice generation and processing, deployed with Docker containerization.',
+      technologies: [
+        'Python',
+        'FastAPI',
+        'Docker',
+      ],
+    ),
   ];
 
   @override

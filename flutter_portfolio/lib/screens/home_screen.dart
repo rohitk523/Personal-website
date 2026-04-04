@@ -131,7 +131,7 @@ class HomeScreen extends StatelessWidget {
     final isSmallScreen = MediaQuery.of(context).size.width < 600;
     final highlights = [
       {'number': '5+', 'label': 'Years Experience'},
-      {'number': '97%', 'label': 'CV Accuracy'},
+      {'number': '10+', 'label': 'AI/ML Systems'},
       {'number': '30+', 'label': 'Projects Built'},
       {'number': 'AWS', 'label': 'SA Certified'},
     ];
