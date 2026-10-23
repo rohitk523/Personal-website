@@ -19,7 +19,7 @@
 </header>
 
 <h2>Profile</h2>
-<p>AI Engineer and Architect with 4.5+ years of experience designing and building production computer vision, LLM and agentic systems end to end, from data and model training to the edge, cloud and product architecture that runs them. I focus on measurable results and controlled cost: blind evaluation before any accuracy claim, idempotent pipelines, and guardrails on GPU spend. I work mainly in Python, PyTorch and FastAPI on AWS and GCP. MS in Artificial Intelligence.</p>
+<p>AI Engineer &amp; Architect with 4.5+ years of experience building production-grade computer vision, NLP and full-stack AI systems. At Cellstrat AI, built the <b>UBall</b> basketball analytics platform: multi-camera player tracking, shot detection and dual-angle fusion using YOLO, SAM and ByteTrack, Gemini VLM game analysis, and deployment from NVIDIA Jetson edge devices to AWS and GCP. Built <b>NxChat</b>, an enterprise RAG chat system on LangChain and AWS OpenSearch with multi-model support (AWS Bedrock + OpenAI). Specialized in end-to-end ML pipelines from model training to production serving using Python, FastAPI, PyTorch, Docker and cloud infrastructure (AWS &amp; GCP). AWS Certified Solutions Architect with an MS in Artificial Intelligence.</p>
 
 <h2>Technical Skills</h2>
 <ul class="skills">
@@ -43,14 +43,14 @@
   <div class="sub">UBall: AI basketball analytics (latest)</div>
   <ul>
     <li>Designed and built a <b>4-camera game-understanding pipeline</b>: YOLO26 / RF-DETR detection, RTMPose, jersey OCR, ByteTrack, cross-camera identity fusion and a ball-possession state machine that emits shot, rebound and turnover events. Architecture runs from Jetson edge capture through S3 and AWS GPU batch jobs.</li>
-    <li>Evaluated it blind against human ground truth: 88–94% shot detection and 89–98% make/miss on 3 of 4 held-out games. Retraining the far-angle model raised its detection from 68% to 93%.</li>
+    <li>Evaluated the system against human-annotated ground truth on held-out games, and retrained the far-angle model on production frames to improve shot detection.</li>
     <li>Built Gemini VLM play narration, a Vertex AI fine-tuning pipeline on GCP, and the FastAPI / Supabase / Celery product backend.</li>
   </ul>
 
   <div class="sub">CellAssist: voice AI for healthcare</div>
   <ul>
     <li>Built a voice AI agent for patient triage that connects Exotel telephony WebSockets to the <b>OpenAI Realtime API</b> for speech-to-speech calls in multiple languages.</li>
-    <li>Kept conversations natural with 200 ms audio buffering, noise suppression, interruption handling and 24 kHz PCM16 audio. Deployed on AWS Mumbai for the lowest caller latency.</li>
+    <li>Kept conversations natural with audio buffering, noise suppression and interruption handling. Deployed on AWS Mumbai for low caller latency.</li>
   </ul>
 
   <div class="sub">NxChat: enterprise RAG chat</div>
