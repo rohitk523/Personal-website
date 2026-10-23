@@ -130,9 +130,9 @@ class HomeScreen extends StatelessWidget {
   Widget _buildHighlightsRow(BuildContext context) {
     final isSmallScreen = MediaQuery.of(context).size.width < 600;
     final highlights = [
-      {'number': '5+', 'label': 'Years Experience'},
-      {'number': '10+', 'label': 'AI/ML Systems'},
-      {'number': '30+', 'label': 'Projects Built'},
+      {'number': '4.5+', 'label': 'Years Experience'},
+      {'number': '4-Cam', 'label': 'CV Pipeline'},
+      {'number': '60+', 'label': 'Projects Built'},
       {'number': 'AWS', 'label': 'SA Certified'},
     ];
 

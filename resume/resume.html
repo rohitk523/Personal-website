@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Rohit Kale - AI Engineer &amp; Architect</title>
+<link rel="stylesheet" href="resume.css">
+</head>
+<body>
+
+<header>
+  <h1>ROHIT KALE</h1>
+  <div class="headline">AI Engineer &amp; Architect &nbsp;|&nbsp; Computer Vision &amp; GenAI &nbsp;|&nbsp; AWS Certified Solutions Architect</div>
+  <div class="contact">
+    <span>Pune, Maharashtra, India</span><span>+91 77438 48037</span><span><a href="mailto:rohitkale523@gmail.com">rohitkale523@gmail.com</a></span>
+  </div>
+  <div class="contact">
+    <span><a href="https://www.linkedin.com/in/rohit-kale-64b5912010/">linkedin.com/in/rohit-kale-64b5912010</a></span><span><a href="https://github.com/rohitk523">github.com/rohitk523</a></span><span><a href="https://github.com/rohitmk523">github.com/rohitmk523</a></span><span><a href="https://portfolio.codewithrk.in">portfolio.codewithrk.in</a></span>
+  </div>
+</header>
+
+<h2>Profile</h2>
+<p>AI Engineer and Architect with 4.5+ years of experience designing and building production computer vision, LLM and agentic systems end to end, from datasets and model training to the edge, cloud and product architecture that runs them. At Cellstrat AI I built the computer vision stack behind <b>UBall</b>, a basketball analytics platform. It is a 4-camera pipeline that detects, tracks and identifies every player, follows ball possession, and scores shots, rebounds and turnovers. Tested on held-out games against human ground truth, it reaches <b>88–94% shot detection</b> and <b>89–98% make/miss accuracy</b> on 3 of 4 blind games. I design for measurable results and controlled cost: blind evaluation before any accuracy claim, idempotent pipelines, and spending caps on GPU jobs. I have also shipped voice AI, RAG and multi-agent LLM products on AWS and GCP. MS in Artificial Intelligence.</p>
+
+<h2>Technical Skills</h2>
+<ul class="skills">
+  <li><b>Architecture:</b> event-driven &amp; batch ML pipelines, microservices, edge-to-cloud ingestion, LLM gateways with provider fallback, RAG reference designs, API design, multi-tenant RBAC, cost &amp; security guardrails</li>
+  <li><b>Computer Vision:</b> YOLOv8 / YOLO11 / YOLO26, RF-DETR, SAM 2 / SAM 3, ByteTrack, DeepSORT, RTMPose, PARSeq OCR, Kalman / RTS smoothing, homography &amp; multi-camera calibration, OpenCV, Detectron2</li>
+  <li><b>GenAI &amp; Agents:</b> OpenAI, Gemini (VLM), Claude, AWS Bedrock; LangChain, LangGraph, Google ADK, MCP; RAG (OpenSearch k-NN, Qdrant, sqlite-vec); OpenAI Realtime API, LiveKit voice agents; Vertex AI fine-tuning</li>
+  <li><b>ML &amp; Evaluation:</b> PyTorch, Ultralytics, scikit-learn, interpretable models, blind / held-out evaluation, dataset building &amp; annotation tooling, reinforcement learning (DQN)</li>
+  <li><b>Backend:</b> Python, FastAPI, asyncio, Celery + Redis, SQLAlchemy (async), Alembic, Pydantic, WebSocket, REST, Pytest</li>
+  <li><b>Cloud &amp; MLOps:</b> AWS (EC2 GPU / spot, S3, Lambda, Step Functions, ECS / ECR, OpenSearch, CloudWatch), GCP (Vertex AI, Cloud Run Jobs, Cloud Functions, Workflows, GCS), Docker, GitHub Actions, NVIDIA Jetson, Cloudflare R2 / Stream</li>
+  <li><b>Data &amp; Frontend:</b> PostgreSQL, Supabase (Auth, RLS), Redis, Firebase; React, Next.js, TypeScript, Vite, Tailwind, shadcn/ui, Flutter</li>
+</ul>
+
+<h2>Professional Experience</h2>
+
+<div class="role">
+  <div class="role-head">
+    <div><span class="title">AI/ML Engineer</span> &nbsp;<span class="org">Cellstrat AI</span></div>
+    <div class="dates">2023 – Present</div>
+  </div>
+
+  <div class="sub">UBall: AI basketball analytics (2025 – present)</div>
+  <ul>
+    <li>Built a <b>4-camera game-understanding pipeline</b> with these stages: per-camera detection (YOLO26 plus a ball/hoop specialist) and pose (RTMPose), jersey-number OCR (PARSeq), ByteTrack tracking, a <b>cross-camera identity solver</b> that merges all angles into one ID per player, Kalman + RTS ball trajectories, and a <b>ball-first possession state machine</b> that emits shot, rebound and turnover events.</li>
+    <li>Evaluated it under a <b>blind protocol</b>: thresholds frozen on one dev game, ground truth used once per test game. Results were 88–94% shot detection, 89–98% make/miss on 3 of 4 games and up to 93% rebound detection. I traced the weak games to measured causes (duplicate jersey numbers, stale calibration) and did not tune on test data.</li>
+    <li>Raised <b>far-angle shot detection from 68% to 93%</b> (189-shot game) by retraining on production frames. Built a dual-angle fusion engine (timestamp matching, confidence weighting, specialist overrides) and a v2 interpretable made/miss model fitted to human labels and validated across games.</li>
+    <li>Trained an in-domain <b>RF-DETR</b> detector (player / referee / ball) from a dataset pre-labelled with SAM 3 and corrected in a custom FastAPI labelling tool. It replaced the CUDA-only SAM 3 passes with ~20 fps detection.</li>
+    <li>Built <b>VLM play-by-play narration</b> with Gemini (3.0 Pro → 3.5 Flash / 3.1 Pro), grounded on structured event JSON. Built a GCP <b>fine-tuning pipeline</b> (Cloud Run Jobs → Cloud Functions → Workflows → Vertex AI) that turns full games into training clips and skips clips already extracted.</li>
+    <li>Built <b>edge video ingestion on NVIDIA Jetson Orin Nano</b> for four GoPro cameras: GPU-accelerated 4K compression, timestamp-UUID sync, WebSocket progress and S3 multipart upload. Also built court mapping that fuses UWB player tags with video through homography.</li>
+    <li><b>Designed the platform architecture</b>: Jetson edge capture → S3 → AWS GPU batch jobs for detection, pose and OCR, with the light stages running on CPU over cached artifacts so each experiment costs minutes instead of a GPU re-run. AWS launchers are gated on rotated credentials with a $5-per-run cap unless approved, and model licences are tracked before anything ships.</li>
+    <li>Built the product backend (FastAPI, Supabase Auth / Postgres, Celery + Redis, Cloudflare R2 + Stream, FCM, Sentry) and the annotation platform (FastAPI + Next.js, Gemini play classification, AWS Step Functions).</li>
+  </ul>
+
+  <div class="sub">Voice AI, RAG &amp; GenAI products (2023 – 2025)</div>
+  <ul>
+    <li><b>CellAssist:</b> voice AI for healthcare triage that connects Exotel telephony to the OpenAI Realtime API. Features speech-to-speech calls, multiple languages, 200 ms audio buffering, interruption handling and 24 kHz PCM16 audio. Deployed on AWS Mumbai.</li>
+    <li><b>NxChat:</b> enterprise RAG chat on LangChain and AWS OpenSearch vector search that routes across models (Bedrock + OpenAI) and supports dataset management and file filtering.</li>
+    <li><b>RexAI:</b> GenAI file classification that combines lexical and LLM methods, with Lambda + Step Functions for high-volume async processing and OpenSearch indexing.</li>
+  </ul>
+</div>
+
+<div class="role">
+  <div class="role-head">
+    <div><span class="title">Software Engineer</span> &nbsp;<span class="org">Independent Consultant</span></div>
+    <div class="dates">Aug 2023 – 2024</div>
+  </div>
+  <ul>
+    <li>Built domain-specific ChatGPT chatbots and PayPal subscription billing (Supabase) for clients' FlutterFlow apps.</li>
+    <li>Automated an end-to-end reading service with n8n + OpenAI: Razorpay payment, form extraction, generated documents and Gmail delivery, with retries and error handling.</li>
+    <li>Containerised AI services with Docker and deployed them on AWS (Lambda, S3, CloudWatch) with GitHub Actions CI/CD.</li>
+  </ul>
+</div>
+
+<div class="role">
+  <div class="role-head">
+    <div><span class="title">Analyst</span> &nbsp;<span class="org">TheMathCompany, Bangalore</span></div>
+    <div class="dates">Feb 2022 – Aug 2023</div>
+  </div>
+  <ul>
+    <li>Built data pipelines for ML model training and evaluation for retail and BFSI clients, plus API-driven automation for client data workflows.</li>
+    <li>Built dashboards that tracked system performance and data-quality metrics for stakeholders.</li>
+  </ul>
+</div>
+
+<h2>Selected Projects</h2>
+
+<div class="project">
+  <span class="name">JARVIS: voice-first personal AI agent</span> <span class="stack">(LiveKit, FastAPI, MCP, RAG, React)</span>
+  <div>Real-time voice loop (VAD → STT → LLM → TTS) that calls tools through an <b>MCP gateway</b> (GitHub, Linear) and a sandboxed CLI bridge to Claude Code / Gemini CLI. Includes document RAG on sqlite-vec.</div>
+</div>
+<div class="project">
+  <span class="name">AURA: AI-coached lifestyle RPG</span> <span class="stack">(LangGraph, FastAPI, React Native, Qdrant, PostgreSQL, AWS)</span>
+  <div>Five domain agents (fitness, health, finance, law, social) built with LangGraph. They are grounded in curated RAG content, read the user's current score, and fall back across LLM providers (Claude → Gemini → Llama).</div>
+</div>
+<div class="project">
+  <span class="name">YouTube Shorts AI agent</span> <span class="stack">(Google ADK, FastAPI, Celery, PostgreSQL, Flutter)</span>
+  <div>Agent pipeline that turns long videos and transcripts into published Shorts: AI voice-over (OpenAI TTS), FFmpeg 9:16 render and YouTube Data API upload behind OAuth 2.0. Related ADK agents summarise Gmail to Telegram.</div>
+</div>
+<div class="project">
+  <span class="name">Full-stack RAG chat</span> <span class="stack">(Next.js, FastAPI, LangChain, OpenSearch k-NN, Clerk, Docker)</span>
+  <div>Upload PDFs and chat with them, with per-user auth and containerised deployment on Railway.</div>
+</div>
+
+<h2>Education &amp; Certification</h2>
+<div class="edu-row"><div><b>AWS Certified Solutions Architect – Associate</b></div><div class="dates"></div></div>
+<div class="edu-row"><div><b>MS, Artificial Intelligence</b>, Liverpool John Moores University</div><div class="dates">2021 – 2023</div></div>
+<div class="edu-row"><div><b>Post Graduate Diploma, Machine Learning &amp; AI</b>, IIIT Bangalore</div><div class="dates">2021 – 2022</div></div>
+<div class="edu-row"><div><b>B.Tech</b>, Visvesvaraya National Institute of Technology (VNIT), Nagpur</div><div class="dates">2016 – 2020</div></div>
+
+
+</body>
+</html>
