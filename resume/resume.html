@@ -40,23 +40,35 @@
     <div class="dates">2025 – Present</div>
   </div>
 
-  <div class="sub">UBall: AI basketball analytics</div>
+  <div class="sub">UBall: AI basketball analytics (latest)</div>
   <ul>
-    <li>Built a <b>4-camera game-understanding pipeline</b> with these stages: per-camera detection (YOLO26 plus a ball/hoop specialist) and pose (RTMPose), jersey-number OCR (PARSeq), ByteTrack tracking, a <b>cross-camera identity solver</b> that merges all angles into one ID per player, Kalman + RTS ball trajectories, and a <b>ball-first possession state machine</b> that emits shot, rebound and turnover events.</li>
-    <li>Evaluated it under a <b>blind protocol</b>: thresholds frozen on one dev game, ground truth used once per test game. Results were 88–94% shot detection, 89–98% make/miss on 3 of 4 games and up to 93% rebound detection. I traced the weak games to measured causes (duplicate jersey numbers, stale calibration) and did not tune on test data.</li>
-    <li>Raised <b>far-angle shot detection from 68% to 93%</b> (189-shot game) by retraining on production frames. Built a dual-angle fusion engine (timestamp matching, confidence weighting, specialist overrides) and a v2 interpretable made/miss model fitted to human labels and validated across games.</li>
-    <li>Trained an in-domain <b>RF-DETR</b> detector (player / referee / ball) from a dataset pre-labelled with SAM 3 and corrected in a custom FastAPI labelling tool. It replaced the CUDA-only SAM 3 passes with ~20 fps detection.</li>
-    <li>Built <b>VLM play-by-play narration</b> with Gemini (3.0 Pro → 3.5 Flash / 3.1 Pro), grounded on structured event JSON. Built a GCP <b>fine-tuning pipeline</b> (Cloud Run Jobs → Cloud Functions → Workflows → Vertex AI) that turns full games into training clips and skips clips already extracted.</li>
-    <li>Built <b>edge video ingestion on NVIDIA Jetson Orin Nano</b> for four GoPro cameras: GPU-accelerated 4K compression, timestamp-UUID sync, WebSocket progress and S3 multipart upload. Also built court mapping that fuses UWB player tags with video through homography.</li>
-    <li><b>Designed the platform architecture</b>: Jetson edge capture → S3 → AWS GPU batch jobs for detection, pose and OCR, with the light stages running on CPU over cached artifacts so each experiment costs minutes instead of a GPU re-run. AWS launchers are gated on rotated credentials with a $5-per-run cap unless approved, and model licences are tracked before anything ships.</li>
-    <li>Built the product backend (FastAPI, Supabase Auth / Postgres, Celery + Redis, Cloudflare R2 + Stream, FCM, Sentry) and the annotation platform (FastAPI + Next.js, Gemini play classification, AWS Step Functions).</li>
+    <li>Designed and built a <b>4-camera game-understanding pipeline</b>: YOLO26 / RF-DETR detection, RTMPose, jersey OCR, ByteTrack, cross-camera identity fusion and a ball-possession state machine that emits shot, rebound and turnover events. Architecture runs from Jetson edge capture through S3 and AWS GPU batch jobs.</li>
+    <li>Evaluated it blind against human ground truth: 88–94% shot detection and 89–98% make/miss on 3 of 4 held-out games. Retraining the far-angle model raised its detection from 68% to 93%.</li>
+    <li>Built Gemini VLM play narration, a Vertex AI fine-tuning pipeline on GCP, and the FastAPI / Supabase / Celery product backend.</li>
   </ul>
 
-  <div class="sub">Voice AI, RAG &amp; GenAI products</div>
+  <div class="sub">CellAssist: voice AI for healthcare</div>
   <ul>
-    <li><b>CellAssist:</b> voice AI for healthcare triage that connects Exotel telephony to the OpenAI Realtime API. Features speech-to-speech calls, multiple languages, 200 ms audio buffering, interruption handling and 24 kHz PCM16 audio. Deployed on AWS Mumbai.</li>
-    <li><b>NxChat:</b> enterprise RAG chat on LangChain and AWS OpenSearch vector search that routes across models (Bedrock + OpenAI) and supports dataset management and file filtering.</li>
-    <li><b>RexAI:</b> GenAI file classification that combines lexical and LLM methods, with Lambda + Step Functions for high-volume async processing and OpenSearch indexing.</li>
+    <li>Built a voice AI agent for patient triage that connects Exotel telephony WebSockets to the <b>OpenAI Realtime API</b> for speech-to-speech calls in multiple languages.</li>
+    <li>Kept conversations natural with 200 ms audio buffering, noise suppression, interruption handling and 24 kHz PCM16 audio. Deployed on AWS Mumbai for the lowest caller latency.</li>
+  </ul>
+
+  <div class="sub">NxChat: enterprise RAG chat</div>
+  <ul>
+    <li>Built an enterprise chat system with <b>RAG</b> on LangChain and AWS OpenSearch vector search, routing across AWS Bedrock and OpenAI models.</li>
+    <li>Added dataset management, file filtering and a versioned FastAPI REST API, deployed on AWS EC2 / S3 with a Pytest suite.</li>
+  </ul>
+
+  <div class="sub">RexAI: GenAI file classification</div>
+  <ul>
+    <li>Built a scalable classification backend that combines lexical techniques with <b>LLM-based classification</b> to keep high-volume work accurate and cheap.</li>
+    <li>Ran processing asynchronously on AWS Lambda + Step Functions with OpenSearch indexing for high-volume workloads.</li>
+  </ul>
+
+  <div class="sub">CellBot: AI chatbot &amp; reports</div>
+  <ul>
+    <li>Built the FastAPI backend (Poetry, Pydantic, WeasyPrint) that generates PDF reports from conversations.</li>
+    <li>Built the Next.js frontend with Clerk authentication, shadcn/ui, real-time markdown rendering and conversation history.</li>
   </ul>
 </div>
 
@@ -83,27 +95,8 @@
   </ul>
 </div>
 
-<h2>Selected Projects</h2>
-
-<div class="project">
-  <span class="name">JARVIS: voice-first personal AI agent</span> <span class="stack">(LiveKit, FastAPI, MCP, RAG, React)</span>
-  <div>Real-time voice loop (VAD → STT → LLM → TTS) that calls tools through an <b>MCP gateway</b> (GitHub, Linear) and a sandboxed CLI bridge to Claude Code / Gemini CLI. Includes document RAG on sqlite-vec.</div>
-</div>
-<div class="project">
-  <span class="name">AURA: AI-coached lifestyle RPG</span> <span class="stack">(LangGraph, FastAPI, React Native, Qdrant, PostgreSQL, AWS)</span>
-  <div>Five domain agents (fitness, health, finance, law, social) built with LangGraph. They are grounded in curated RAG content, read the user's current score, and fall back across LLM providers (Claude → Gemini → Llama).</div>
-</div>
-<div class="project">
-  <span class="name">YouTube Shorts AI agent</span> <span class="stack">(Google ADK, FastAPI, Celery, PostgreSQL, Flutter)</span>
-  <div>Agent pipeline that turns long videos and transcripts into published Shorts: AI voice-over (OpenAI TTS), FFmpeg 9:16 render and YouTube Data API upload behind OAuth 2.0. Related ADK agents summarise Gmail to Telegram.</div>
-</div>
-<div class="project">
-  <span class="name">Full-stack RAG chat</span> <span class="stack">(Next.js, FastAPI, LangChain, OpenSearch k-NN, Clerk, Docker)</span>
-  <div>Upload PDFs and chat with them, with per-user auth and containerised deployment on Railway.</div>
-</div>
-
 <h2>Education &amp; Certification</h2>
-<div class="edu-row"><div><b>AWS Certified Solutions Architect – Associate</b></div><div class="dates"></div></div>
+<div class="edu-row"><div><b>AWS Certified Solutions Architect – Associate</b>, Amazon Web Services</div><div class="dates">2025</div></div>
 <div class="edu-row"><div><b>MS, Artificial Intelligence</b>, Liverpool John Moores University</div><div class="dates">2021 – 2023</div></div>
 <div class="edu-row"><div><b>Post Graduate Diploma, Machine Learning &amp; AI</b>, IIIT Bangalore</div><div class="dates">2021 – 2022</div></div>
 <div class="edu-row"><div><b>B.Tech</b>, Visvesvaraya National Institute of Technology (VNIT), Nagpur</div><div class="dates">2016 – 2020</div></div>
