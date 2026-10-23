@@ -372,7 +372,7 @@ class AboutScreen extends StatelessWidget {
             context,
             'AI/ML Engineer',
             'Cellstrat AI',
-            '2023 - Present',
+            '2025 - Present',
             [
               'Built the UBall 4-camera CV pipeline: detection, pose, jersey OCR, cross-camera identity and a ball-possession state machine. On blind games: 88-94% shot detection, 89-98% make/miss on 3 of 4',
               'Raised far-angle shot detection from 68% to 93% by retraining, then designed dual-angle fusion and an interpretable made/miss model fitted to human labels',

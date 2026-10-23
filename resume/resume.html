@@ -19,7 +19,7 @@
 </header>
 
 <h2>Profile</h2>
-<p>AI Engineer and Architect with 4.5+ years of experience designing and building production computer vision, LLM and agentic systems end to end, from datasets and model training to the edge, cloud and product architecture that runs them. At Cellstrat AI I built the computer vision stack behind <b>UBall</b>, a basketball analytics platform. It is a 4-camera pipeline that detects, tracks and identifies every player, follows ball possession, and scores shots, rebounds and turnovers. Tested on held-out games against human ground truth, it reaches <b>88–94% shot detection</b> and <b>89–98% make/miss accuracy</b> on 3 of 4 blind games. I design for measurable results and controlled cost: blind evaluation before any accuracy claim, idempotent pipelines, and spending caps on GPU jobs. I have also shipped voice AI, RAG and multi-agent LLM products on AWS and GCP. MS in Artificial Intelligence.</p>
+<p>AI Engineer and Architect with 4.5+ years of experience designing and building production computer vision, LLM and agentic systems end to end, from data and model training to the edge, cloud and product architecture that runs them. I focus on measurable results and controlled cost: blind evaluation before any accuracy claim, idempotent pipelines, and guardrails on GPU spend. I work mainly in Python, PyTorch and FastAPI on AWS and GCP. MS in Artificial Intelligence.</p>
 
 <h2>Technical Skills</h2>
 <ul class="skills">
@@ -37,10 +37,10 @@
 <div class="role">
   <div class="role-head">
     <div><span class="title">AI/ML Engineer</span> &nbsp;<span class="org">Cellstrat AI</span></div>
-    <div class="dates">2023 – Present</div>
+    <div class="dates">2025 – Present</div>
   </div>
 
-  <div class="sub">UBall: AI basketball analytics (2025 – present)</div>
+  <div class="sub">UBall: AI basketball analytics</div>
   <ul>
     <li>Built a <b>4-camera game-understanding pipeline</b> with these stages: per-camera detection (YOLO26 plus a ball/hoop specialist) and pose (RTMPose), jersey-number OCR (PARSeq), ByteTrack tracking, a <b>cross-camera identity solver</b> that merges all angles into one ID per player, Kalman + RTS ball trajectories, and a <b>ball-first possession state machine</b> that emits shot, rebound and turnover events.</li>
     <li>Evaluated it under a <b>blind protocol</b>: thresholds frozen on one dev game, ground truth used once per test game. Results were 88–94% shot detection, 89–98% make/miss on 3 of 4 games and up to 93% rebound detection. I traced the weak games to measured causes (duplicate jersey numbers, stale calibration) and did not tune on test data.</li>
@@ -52,7 +52,7 @@
     <li>Built the product backend (FastAPI, Supabase Auth / Postgres, Celery + Redis, Cloudflare R2 + Stream, FCM, Sentry) and the annotation platform (FastAPI + Next.js, Gemini play classification, AWS Step Functions).</li>
   </ul>
 
-  <div class="sub">Voice AI, RAG &amp; GenAI products (2023 – 2025)</div>
+  <div class="sub">Voice AI, RAG &amp; GenAI products</div>
   <ul>
     <li><b>CellAssist:</b> voice AI for healthcare triage that connects Exotel telephony to the OpenAI Realtime API. Features speech-to-speech calls, multiple languages, 200 ms audio buffering, interruption handling and 24 kHz PCM16 audio. Deployed on AWS Mumbai.</li>
     <li><b>NxChat:</b> enterprise RAG chat on LangChain and AWS OpenSearch vector search that routes across models (Bedrock + OpenAI) and supports dataset management and file filtering.</li>
